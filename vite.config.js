@@ -3,6 +3,7 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import legacy from "@vitejs/plugin-legacy";
 import pages from "vite-plugin-pages-svelte";
 import { stylifyVite } from '@stylify/unplugin';
+import colors from "./colors"
 
 const stylifyPlugin = (mangle) => (stylifyVite({
     bundles: [{
@@ -10,7 +11,10 @@ const stylifyPlugin = (mangle) => (stylifyVite({
         files: ['./src/**/*.svelte'],
     }],
     compiler: {
-      mangleSelectors: mangle
+      mangleSelectors: mangle,
+      variables: {
+        ...colors
+      }
     }
 }));
 
